@@ -9,13 +9,25 @@ import {
   Thead,
   Tr,
   Flex,
+  VStack,
 } from "@chakra-ui/react"
+import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import NextLink from "next/link"
 import { useEffect, useState } from "react"
 import { useAccount } from "wagmi"
 
+import { collection } from "../data/sampleData.json";
+import Post from "../components/posts/Post"
+
+
+
 export default function PaperList() {
   const { isConnected } = useAccount()
+
+  const data = collection;
+
+  console.log(data);
+
   return (
     <>
       <Flex justify="space-between" mb={6}>
@@ -28,15 +40,11 @@ export default function PaperList() {
           )}
         </NextLink>
       </Flex>
-      <Table>
-        <Tr>
-          <Th>TLDR-ID</Th>
-          <Th>Authors</Th>
-          <Th>Deadline</Th>
-          <Th>Paper CID</Th>
-          <Th>Actions</Th>
-        </Tr>
-      </Table>
+      <VStack align={"left"} spacing={4}>
+        {data.map((post, i) => (
+            <Post post={post} index={i+1} />
+        ))}
+      </VStack>
     </>
   )
 }

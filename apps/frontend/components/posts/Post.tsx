@@ -1,17 +1,36 @@
-import { Link } from "@chakra-ui/react";
+import { Link, Text } from "@chakra-ui/react";
 
-export default function Post(props: { post: any, index: number }) {
+const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+]
+
+export default function Post(props: { post: any }) {
     const post = props.post;
-    const index = props.index;
+    const date = new Date(post.date);
+
+    const dateStr = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
 
     return (
         <div>
-            <p>
-                {`${index}. `}
+            <Text>
                 <Link href={`https://www.biorxiv.org/content/${post.doi}v${post.version}`} isExternal>
                     <b>{post.title}</b>
                 </Link>
-            </p>
+            </Text>
+            <Text fontSize="xs">
+                <i>{dateStr}</i> | <i>{post.category}</i> | <i>{post.server}</i>
+            </Text>
         </div>
     )
 }

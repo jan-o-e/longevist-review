@@ -8,8 +8,9 @@ import {
   Th,
   Thead,
   Tr,
-  Flex,
+  Flex as HStack,
   VStack,
+  Spacer,
 } from "@chakra-ui/react"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import NextLink from "next/link"
@@ -30,7 +31,7 @@ export default function PaperList() {
 
   return (
     <>
-      <Flex justify="space-between" mb={6}>
+      <HStack justify="space-between" mb={6}>
         <Heading>Pre-Prints for Review</Heading>
         <NextLink href="/issue" passHref>
           {isConnected && (
@@ -39,10 +40,13 @@ export default function PaperList() {
             </Button>
           )}
         </NextLink>
-      </Flex>
+      </HStack>
       <VStack align={"left"} spacing={4}>
         {data.map((post, i) => (
-            <Post post={post} index={i+1} />
+            <HStack>
+                <Text px={3}>{i+1}. </Text>
+                <Post post={post} />
+            </HStack>
         ))}
       </VStack>
     </>

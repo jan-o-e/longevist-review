@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex, Link, Text } from "@chakra-ui/react"
+import { Button, ButtonGroup, Flex, Link, Text, Box } from "@chakra-ui/react"
 import { ConnectButton } from "@rainbow-me/rainbowkit"
 import NextLink from "next/link"
 import { useAccount } from "wagmi"
@@ -19,9 +19,14 @@ export const Header = () => {
       borderBottomColor="gray.200"
     >
       <NextLink href="/">
-        <Text fontWeight="bold" fontStyle="italic" fontSize="2xl">
-          P33R Review
-        </Text>
+        <Box
+          bg="lightgreen" // Set the background color to light green
+          p={4} // Add some padding to the box
+        >
+          <Text fontWeight="bold" fontStyle="italic" fontSize="xl">
+            The Longevity Decentralized Review
+          </Text>
+        </Box>
       </NextLink>
       <ButtonGroup isAttached gap={2} alignItems="center">
         <ConnectButton />

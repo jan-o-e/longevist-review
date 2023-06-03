@@ -44,7 +44,8 @@ export default function PaperList() {
       <VStack align={"left"} spacing={4}>
         {data.map((post, i) => (
             <HStack>
-                <Text px={3}>{i+1}. </Text>
+                <Text>▲</Text>
+                <Text px={2}>{i+1}. </Text>
                 <Post post={post} />
             </HStack>
         ))}

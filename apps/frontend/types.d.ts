@@ -29,3 +29,8 @@ export interface SignedCommitment {
   signedAnonAddress: string
   reviewUrl: string
 }
+
+export interface Review {
+  address: string
+  content: string
+}

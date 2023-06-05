@@ -1,25 +1,15 @@
 import {
   Button,
   Heading,
-  Table,
-  Link,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
   Flex as HStack,
   VStack,
-  Spacer,
 } from "@chakra-ui/react"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import NextLink from "next/link"
-import { useEffect, useState } from "react"
 import { useAccount } from "wagmi"
 
 import { collection } from "../data/sampleData.json";
 import Post from "../components/posts/Post"
-
 
 
 export default function PaperList() {
@@ -46,7 +36,7 @@ export default function PaperList() {
             <HStack>
                 <Text>▲</Text>
                 <Text px={2}>{i+1}. </Text>
-                <Post post={post} />
+                <Post post={post} index={i}/>
             </HStack>
         ))}
       </VStack>
